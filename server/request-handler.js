@@ -5,6 +5,9 @@
  * this file and include it in basic-server.js so that it actually works.
  * *Hint* Check out the node module documentation at http://nodejs.org/api/modules.html. */
 
+ var url = require('url');
+ var messageStore = [];
+
 var handleRequest = function(request, response) {
   /* the 'request' argument comes from nodes http module. It includes info about the
   request - such as what URL the browser is requesting. */
@@ -41,5 +44,37 @@ var defaultCorsHeaders = {
   "access-control-allow-origin": "*",
   "access-control-allow-methods": "GET, POST, PUT, DELETE, OPTIONS",
   "access-control-allow-headers": "content-type, accept",
-  "access-control-max-age": 10 // Seconds.
+  "access-control-max-age": 10, // Seconds.
 };
+
+var sendResponse = function(response, statusCode, sendData){
+  console.log("Sending response");
+
+  statusCode = statusCode || 200;
+  defaultCorsHeaders[ "Content-Type"] = "application/json";
+
+  response.writeHead(statusCode, defaultCorsHeaders);
+  response.write(JSON.stringify(sendData));
+  response.end();
+}
+
+var getData = function(request){
+  var postData = "";
+
+  request.on("data", function(bitsize){
+    //collate all the bits of data
+    postData += bitsize;
+  });
+
+  request.on("end", function(){
+    var completed = JSON.parse(postData);
+
+    //extra-credit: add to front of message store
+    completed.createdOn = new Date();
+    messageStore.unshift(completed);
+  });
+}
+
+
+exports.handleRequest = handleRequest;
+exports.sendResponse = sendResponse;
