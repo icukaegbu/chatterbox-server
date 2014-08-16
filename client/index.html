@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Chatterbox</title>
+    
+    <link rel="stylesheet" href="bower_components/bootstrapper/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="bower_components/bootstrapper/bootstrap/css/bootstrap-responsive.css">
+    <link rel="stylesheet" href="styles/styles.css">
+
+    <!-- dependencies -->
+    <script src="bower_components/jquery/jquery.min.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/bootstrapper/bootstrap/js/bootstrap.js"></script>
+    <!-- your scripts -->
+    <script src="scripts/config.js"></script>
+    <script src="scripts/app.js"></script>
+  </head>
+   <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <!-- Brand -->
+          <a class="brand" href="index.html">Chatterbox</a>
+          <div class="nav-collapse collapse">
+            <!-- Menu Links -->
+            <ul class="nav">
+              <li><a href="index.html">Home</a></li>
+            </ul>
+            <form action="#" id="send" method="post">
+              <input type="text" name="message" id="message">
+              <!-- <input type="submit" name="submit" class="btn btn-info pull-right compose"> -->
+              
+              <a id="btnGetMessages" class="btn btn-success pull-right compose">Get Messages</a>
+              <a id="btnSendMessage" class="btn btn-info pull-right compose">Create Message</a>
+            </form>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="spinner"><img src="images/spiffygif_46x46.gif" alt=""></div>
+    <div class="container main" >
+      <div class="row">
+
+        <div class="span4">
+          <div class="box box-left">
+            <div class="miniatureProfile"></div>
+            <h5><div class="username">Users</div></h5>
+          </div>
+          <div class="box box-left">
+            <div class="hashtags"></div>
+          </div>
+        </div>
+
+        <div class="span8">
+          <div class="box box-right">
+            <div class="content-header">
+              <h4 class="underlined">Messages</h4>
+            </div>
+            <div class="messages"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <script>
+    $(function(){
+      app.init();
+
+      $("#btnGetMessages").click(app.refreshMessages);
+      $("#btnSendMessage").click(app.postMessage);
+    });
+    </script>
+  </body>
+</html>

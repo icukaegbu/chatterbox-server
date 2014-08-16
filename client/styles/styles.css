@@ -1,0 +1,185 @@
+body {
+    background: #eee;
+    text-align: center;
+    padding: 0 25px;
+    font-family: arial, sans-serif;
+
+    padding-top: 100px;
+      /*The ../ is necessary */
+/*    background-image: url('../img/bg.png');
+    background-position: left 40px;
+    background-attachment: fixed;
+    background-repeat: no-repeat;*/
+    background-color: #C0DEED;
+}
+
+
+/*main content area*/
+
+#main {
+    width: 500px;
+    margin: auto;
+    text-align: left;
+    /*background: white;*/
+    padding: 50px 60px;
+    border: solid #ddd;
+    border-width: 0 1px 1px 1px;
+    background-color: rgba(255,255,255,0.3);
+}
+
+#main h1 {
+    margin-top: 0;
+    font-size: 35px;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+
+#main h1 span {
+    font-style:italic;
+}
+
+#main ul {
+    padding-left: 20px;
+}
+
+#main .error {
+    border: 1px solid red;
+    background: #FDEFF0;
+    padding: 20px;
+}
+
+#main .success {
+    margin-top: 25px;
+}
+
+#main .success code {
+    font-size: 12px;
+    color: green;
+    line-height: 13px;
+}
+
+form {
+    padding: 20px;
+    padding-left: 0;
+    margin-bottom: 20px;
+}
+
+form input[type=text] {
+    margin-right: 10px;
+    width: 50%;
+    font-size: 12px;
+    padding: 5px;
+}
+
+.chat {
+    padding: 5px;
+    margin-bottom: 5px;
+    background-color: #eee;
+}
+
+.chat .username {
+    font-weight: 800;
+}
+
+.chat:hover {
+    background-color: #ddd;
+}
+
+.spinner {
+    float: right;
+    height: 46px;
+    margin-bottom: 5px;
+}
+
+.spinner img {
+    padding: 10px;
+}
+
+#btnGetMessages, #btnSendMessage {
+  margin-right: 10px;
+}
+
+
+
+/*FROM TWITTLER*/
+/*White boxes*/
+.box {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: #fff;
+  border: 1px solid #C2C2C2;
+  border-radius: 6px;
+  padding: 5px 0px;
+  margin: 15px;
+
+}
+.box-left {
+  margin-right: 0px;
+}
+.box-right {
+  margin-left: 0px;
+}
+
+/* elements in stream underlined, displayed side-by-side */
+
+.underlined {
+  border-bottom: 1px solid #DEDEDE;
+}
+
+.list:hover {
+  background-color: #f5f5f5;
+}
+
+h4, h5, .list, .hashtags {
+  margin: 0px;
+  padding: 10px;
+}
+
+.smallProfile {
+  float: left;
+}
+.smallProfile {
+  margin: 3px 8px 0px 0px;
+  width: 50px;
+}
+
+.miniatureProfile {
+  width: 30px;
+  float: left;
+  margin: 5px;
+}
+
+.mediumProfile {
+  width: 100px;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+.largeProfile {
+  width: 100px;
+}
+
+.timestamp {
+  color: #BFBFBF;
+}
+
+.white {
+  color: white;
+}
+
+/*User profile picture background*/
+.user-info {
+  height: 200px;
+  background-image: url('https://abs.twimg.com/a/1381994476/t1/img/grey_header_web.jpg');
+  background-position: center bottom;
+}
+
+.inner-overlay {
+  background: linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,0.55) 100%);
+  height: 190px;
+}
+
+.navbar-search {
+  margin-right: 15px;
+}
