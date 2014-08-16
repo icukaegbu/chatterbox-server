@@ -1,6 +1,6 @@
 /* Import node's http module: */
 var http = require("http");
-var handleRequest = require('./request-handler');
+var handler = require('./request-handler');
 var url = require('url');
 
 /* Every server needs to listen on a port with a unique number. The
@@ -20,21 +20,21 @@ var ip = "127.0.0.1";
 we could have called it anything (myServer, blahblah, etc.). The function we pass it (handleRequest)
 will, unsurprisingly, handle all incoming requests. (ps: 'handleRequest' is in the 'request-handler' file).
 Lastly, we tell the server we made to listen on the given port and IP. */
-// var server = http.createServer(function(request, response){
-// 	var path = url.parse(request.url).pathname;
-// 	console.log(path);
+var server = http.createServer(function(request, response){
+	var path = url.parse(request.url).pathname;
+	console.log(path);
 
-// 	if ( routes.indexOf(path) !== -1 ){
-// 		handleRequest.handleRequest(request, response);
-// 	}
-// 	else{
-// 		handleRequest.sendResponse(response, 404, {});
-// 	}
+	if ( routes.indexOf(path) !== -1 ){
+		handler.handleRequest(request, response);
+	}
+	else{
+		handler.sendResponse(response, 404, {});
+	}
 
-// 	handleRequest.handleRequest(request, response);
+	handler.handleRequest(request, response);
 	
-// });
-var server = http.createServer(handleRequest.handleRequest);
+});
+//var server = http.createServer(handler.handleRequest);
 
 console.log("Listening on http://" + ip + ":" + port);
 server.listen(port, ip);
