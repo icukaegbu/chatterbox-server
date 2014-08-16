@@ -10,7 +10,7 @@ var app = {
 	config: {
 				POST: 'POST',
 				GET: 'GET',
-				URL: 'https://127.0.0.1:3000/1/classes/chatterbox',
+				URL: 'https://127.0.0.1:3000/classes/messages',
 				CONTENT_TYPE: 'application/json'
 			},
 
@@ -29,7 +29,7 @@ var app = {
 			url: app.config.URL,
 			type: app.config.GET,
 			contentType: app.config.CONTENT_TYPE,
-			data: { order: '-createdAt' },
+			//data: { order: '-createdAt' },
 
 			//success function
 			success: function(data){
@@ -157,7 +157,7 @@ var app = {
 	},
 
 	refreshMessages: function (){
-	   setInterval(app.fetch, 3000);
+	   //setInterval(app.fetch, 3000);
 	},
 
 	startSpinner: function(){
