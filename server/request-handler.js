@@ -17,22 +17,25 @@ var handleRequest = function(request, response) {
 
   console.log("Serving request type " + request.method + " for url " + request.url);
 
-  var statusCode = 200;
+  //handle all responses
+  process(request.method, request, response);
 
-  /* Without this line, this server wouldn't work. See the note
-   * below about CORS. */
-  var headers = defaultCorsHeaders;
+  // var statusCode = 200;
 
-  headers['Content-Type'] = "text/plain";
+  // /* Without this line, this server wouldn't work. See the note
+  //  * below about CORS. */
+  // var headers = defaultCorsHeaders;
 
-  /* .writeHead() tells our server what HTTP status code to send back */
-  response.writeHead(statusCode, headers);
+  // headers['Content-Type'] = "text/plain";
 
-  /* Make sure to always call response.end() - Node will not send
-   * anything back to the client until you do. The string you pass to
-   * response.end() will be the body of the response - i.e. what shows
-   * up in the browser.*/
-  response.end("Hello, World!");
+  // /* .writeHead() tells our server what HTTP status code to send back */
+  // response.writeHead(statusCode, headers);
+
+  // /* Make sure to always call response.end() - Node will not send
+  //  * anything back to the client until you do. The string you pass to
+  //  * response.end() will be the body of the response - i.e. what shows
+  //  * up in the browser.*/
+  // response.end("Hello, World!");
 };
 
 /* These headers will allow Cross-Origin Resource Sharing (CORS).
@@ -58,6 +61,8 @@ var sendResponse = function(response, statusCode, sendData){
   response.end();
 }
 
+
+//UTILITY METHODS
 var getData = function(request){
   var postData = "";
 
@@ -73,6 +78,22 @@ var getData = function(request){
     completed.createdOn = new Date();
     messageStore.unshift(completed);
   });
+}
+
+var process = function(action, request, response){
+  //declare an object to hold all the actions
+  if ( action === 'GET'){
+    sendResponse(response, 200, messageStore);
+  }
+  else if ( action === 'POST' ){
+    getData( request, response );
+  }
+  else if ( action === 'OPTIONS' ){
+    sendResponse( response );
+  }
+  else{
+    sendResponse( response, 404, "Not Found");
+  }
 }
 
 
